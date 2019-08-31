@@ -1,0 +1,7 @@
+type Mutation {
+	editInfo(name: String): User!
+}
+
+type Query {
+	userInfo(id: String!): User!
+}
