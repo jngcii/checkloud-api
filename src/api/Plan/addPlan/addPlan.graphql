@@ -1,0 +1,14 @@
+input InputItem {
+	keyword: String!
+	color: String!
+	parentItem: [String]
+	childItems: [String]
+}
+
+type Mutation {
+	addPlan(title: String!, itemActs: [InputItem]): Plan
+}
+
+type Query {
+	something: String
+}
