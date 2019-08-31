@@ -13,7 +13,7 @@ export default {
 			});
 
 			itemActs.forEach(async itemAct => {
-				const i = await context.prisma.createItemAct({
+				await context.prisma.createItemAct({
 					plan: { connect: { id: plan.id } },
 					keyword: itemAct.keyword,
 					color: itemAct.color,
@@ -25,7 +25,7 @@ export default {
 				});
 			});
 
-			if (plan.itemActs) return plan;
+			return plan;
 		}
 	}
 };
