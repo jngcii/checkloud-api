@@ -1,0 +1,48 @@
+type User {
+	id: ID!
+	username: String!
+	password: String!
+	name: String
+	createdAt: String!
+	plans: [Plan]
+	items: [Item]
+	itemSgts: [ItemSgt]
+}
+
+type Plan {
+	id: ID!
+	user: User!
+	title: String!
+	startAt: String!
+	itemActs: [ItemAct]
+	isActive: Boolean!
+	isMain: Boolean!
+}
+
+type ItemAct {
+	id: ID!
+	plan: Plan!
+	keyword: String!
+	color: String!
+	isChecked: Boolean!
+	parentItem: Item
+	childItems: [Item]
+	finishedItem: String
+	memo: String
+}
+
+type Item {
+	id: ID!
+	user: User!
+	keyword: String!
+	color: String!
+	parentItem: Item
+	childItems: [Item]
+	parentItemAct: ItemAct
+	childItemAct: ItemAct
+}
+type ItemSgt {
+	id: ID!
+	user: User!
+	keyword: String!
+}
