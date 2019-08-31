@@ -17,7 +17,7 @@ type Plan {
 	user: User!
 	title: String!
 	startAt: String!
-	itemActs: [ItemAct!]!
+	itemActs: [ItemAct!]
 	isActive: Boolean!
 	isMain: Boolean!
 }
