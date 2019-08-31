@@ -41,8 +41,14 @@ type Item {
 	parentItemAct: ItemAct
 	childItemAct: ItemAct
 }
+
 type ItemSgt {
 	id: ID!
 	user: User!
 	keyword: String!
+}
+
+type AuthPayload {
+	token: String
+	user: User
 }
