@@ -3,6 +3,7 @@ input InputItem {
 	color: String!
 	parentItem: [String]
 	childItems: [String]
+	order: Int!
 }
 
 type Mutation {

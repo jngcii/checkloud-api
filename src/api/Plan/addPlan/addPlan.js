@@ -20,10 +20,9 @@ export default {
 					isChecked: false,
 					parentItem: itemAct.parentItem || null,
 					childItems: itemAct.childItems || null,
-					memo: ""
+					memo: "",
+					order: itemAct.order
 				});
-
-				console.log(i);
 			});
 
 			if (plan.itemActs) return plan;

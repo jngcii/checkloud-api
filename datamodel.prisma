@@ -26,7 +26,9 @@ type Item {
     color: String!
     parentItem: Item @relation(name: "ItemOfItem", link: INLINE)
     childItems: [Item] @relation(name: "ItemOfItem", onDelete: CASCADE)
+	order: Int!
 }
+
 type ItemSgt {
     id: ID! @id
 	user: User! @relation(name: "ItemSgtOfUser", link: INLINE)
@@ -43,4 +45,5 @@ type ItemAct {
 	childItems: [String] @scalarList(strategy: RELATION)
 	finishedTime: DateTime @updatedAt
 	memo: String
+	order: Int!
 }
