@@ -1,0 +1,7 @@
+type Mutation {
+	signin(username: String!, password: String!): AuthPayload
+}
+
+type Query {
+	something: String
+}
