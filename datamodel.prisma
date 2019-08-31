@@ -19,18 +19,6 @@ type Plan {
 	isMain: Boolean!
 }
 
-type ItemAct {
-	id: ID! @id
-	plan: Plan! @relation(name: "ItemActOfPlan")
-	keyword: String!
-	color: String!
-	isChecked: Boolean!
-	parentItem: Item @relation(name: "ParentOfItemAct")
-	childItems: [Item] @relation(name: "ChildOfItemAct")
-	finishedItem: DateTime @updatedAt
-	memo: String
-}
-
 type Item {
     id: ID! @id
 	user: User! @relation(name: "ItemOfUser", link: INLINE)
@@ -38,11 +26,21 @@ type Item {
     color: String!
     parentItem: Item @relation(name: "ItemOfItem", link: INLINE)
     childItems: [Item] @relation(name: "ItemOfItem", onDelete: CASCADE)
-	parentItemAct: ItemAct @relation(name: "ChildOfItemAct")
-	childItemAct: ItemAct @relation(name: "ParentOfItemAct", link: INLINE)
 }
 type ItemSgt {
     id: ID! @id
 	user: User! @relation(name: "ItemSgtOfUser", link: INLINE)
     keyword: String!
+}
+
+type ItemAct {
+	id: ID! @id
+	plan: Plan @relation(name: "ItemActOfPlan", link: INLINE)
+	keyword: String!
+	color: String!
+	isChecked: Boolean!
+	parentItem: [String] @scalarList(strategy: RELATION)
+	childItems: [String] @scalarList(strategy: RELATION)
+	finishedTime: DateTime @updatedAt
+	memo: String
 }

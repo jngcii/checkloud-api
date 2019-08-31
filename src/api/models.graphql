@@ -7,6 +7,9 @@ type User {
 	plans: [Plan]
 	items: [Item]
 	itemSgts: [ItemSgt]
+	planCount: Int!
+	activePlanCount: Int!
+	itemCount: Int!
 }
 
 type Plan {
@@ -14,21 +17,9 @@ type Plan {
 	user: User!
 	title: String!
 	startAt: String!
-	itemActs: [ItemAct]
+	itemActs: [ItemAct!]!
 	isActive: Boolean!
 	isMain: Boolean!
-}
-
-type ItemAct {
-	id: ID!
-	plan: Plan!
-	keyword: String!
-	color: String!
-	isChecked: Boolean!
-	parentItem: Item
-	childItems: [Item]
-	finishedItem: String
-	memo: String
 }
 
 type Item {
@@ -51,4 +42,16 @@ type ItemSgt {
 type AuthPayload {
 	token: String
 	user: User
+}
+
+type ItemAct {
+	id: ID!
+	plan: Plan!
+	keyword: String!
+	color: String!
+	isChecked: Boolean!
+	parentItem: [String]
+	childItems: [String]
+	finishedTime: String
+	memo: String
 }
