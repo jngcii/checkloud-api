@@ -1,0 +1,18 @@
+enum ACTIONS {
+	EDIT
+	DELETE
+}
+
+type Mutation {
+	editPlan(
+		id: String!
+		title: String
+		isActive: Boolean
+		isMain: Boolean
+		action: ACTIONS!
+	): Boolean
+}
+
+type Query {
+	something: String
+}
