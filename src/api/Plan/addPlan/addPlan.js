@@ -8,21 +8,13 @@ export default {
 			const plan = await context.prisma.createPlan({
 				title,
 				user: { connect: { id: userId } },
+				itemActs: {
+					connect: itemActs.map(itemAct => {
+						return { id: itemAct.id };
+					})
+				},
 				isActive: true,
 				isMain: true
-			});
-
-			itemActs.forEach(async itemAct => {
-				await context.prisma.createItemAct({
-					plan: { connect: { id: plan.id } },
-					keyword: itemAct.keyword,
-					color: itemAct.color,
-					isChecked: false,
-					parentItem: itemAct.parentItem || null,
-					childItems: itemAct.childItems || null,
-					memo: "",
-					order: itemAct.order
-				});
 			});
 
 			return plan;

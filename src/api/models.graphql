@@ -47,7 +47,7 @@ type AuthPayload {
 
 type ItemAct {
 	id: ID!
-	plan: Plan!
+	plan: Plan
 	keyword: String!
 	color: String!
 	isChecked: Boolean!
@@ -55,5 +55,13 @@ type ItemAct {
 	childItems: [String]
 	finishedTime: String
 	memo: String
+	order: Int!
+}
+
+input InputItem {
+	keyword: String!
+	color: String
+	parentId: String
+	originId: String
 	order: Int!
 }

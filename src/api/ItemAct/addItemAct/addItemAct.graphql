@@ -1,0 +1,4 @@
+type Mutation {
+	addItemActs(itemActs: [InputItem]): [ItemAct]
+	addItemAct(itemAct: InputItem): ItemAct
+}

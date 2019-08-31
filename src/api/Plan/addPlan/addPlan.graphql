@@ -1,13 +1,9 @@
-input InputItem {
-	keyword: String!
-	color: String!
-	parentItem: [String]
-	childItems: [String]
-	order: Int!
+input InputId {
+	id: String
 }
 
 type Mutation {
-	addPlan(title: String!, itemActs: [InputItem]): Plan
+	addPlan(title: String!, itemActs: [InputId]): Plan
 }
 
 type Query {
