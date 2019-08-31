@@ -1,0 +1,48 @@
+type User {
+	id: ID! @id
+	username: String! @unique
+	password: String!
+	name: String
+	createdAt: DateTime! @createdAt
+	plans: [Plan] @relation(name: "PlanOfUser", onDelete: CASCADE)
+	items: [Item] @relation(name: "ItemOfUser", onDelete: CASCADE)
+	itemSgts: [ItemSgt] @relation(name: "ItemSgtOfUser", onDelete: CASCADE)
+}
+
+type Plan {
+	id: ID! @id
+	user: User! @relation(name: "PlanOfUser", link: INLINE)
+	title: String!
+	startAt: DateTime! @createdAt
+	itemActs: [ItemAct] @relation(name: "ItemActOfPlan", onDelete: CASCADE)
+	isActive: Boolean!
+	isMain: Boolean!
+}
+
+type ItemAct {
+	id: ID! @id
+	plan: Plan! @relation(name: "ItemActOfPlan")
+	keyword: String!
+	color: String!
+	isChecked: Boolean!
+	parentItem: Item @relation(name: "ParentOfItemAct")
+	childItems: [Item] @relation(name: "ChildOfItemAct")
+	finishedItem: DateTime @updatedAt
+	memo: String
+}
+
+type Item {
+    id: ID! @id
+	user: User! @relation(name: "ItemOfUser", link: INLINE)
+    keyword: String!
+    color: String!
+    parentItem: Item @relation(name: "ItemOfItem", link: INLINE)
+    childItems: [Item] @relation(name: "ItemOfItem", onDelete: CASCADE)
+	parentItemAct: ItemAct @relation(name: "ChildOfItemAct")
+	childItemAct: ItemAct @relation(name: "ParentOfItemAct", link: INLINE)
+}
+type ItemSgt {
+    id: ID! @id
+	user: User! @relation(name: "ItemSgtOfUser", link: INLINE)
+    keyword: String!
+}
