@@ -1,0 +1,8 @@
+type Mutation {
+	addItem(
+		keyword: String!
+		color: String!
+		parentId: String
+		order: Int!
+	): Item
+}

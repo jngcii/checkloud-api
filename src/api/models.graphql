@@ -29,8 +29,6 @@ type Item {
 	color: String!
 	parentItem: Item
 	childItems: [Item]
-	parentItemAct: ItemAct
-	childItemAct: ItemAct
 	order: Int!
 }
 
