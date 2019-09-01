@@ -1,0 +1,17 @@
+input InputOrder {
+	id: String!
+	order: Int
+}
+
+type Mutation {
+	editItemActs(itemActs: [InputOrder]): Boolean
+
+	editItemAct(
+		id: String!
+		keyword: String!
+		memo: String!
+		isChecked: Boolean
+	): Boolean
+
+	checkItem(id: String!): Boolean
+}
