@@ -1,0 +1,13 @@
+enum ACTIONS {
+	EDIT
+	DELETE
+}
+
+type Mutation {
+	editItem(
+		id: String!
+		keyword: String
+		color: String
+		action: ACTIONS!
+	): Boolean
+}
