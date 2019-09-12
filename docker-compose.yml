@@ -5,6 +5,7 @@ services:
     restart: always
     ports:
     - "4466:4466"
+    cpuset: "1"
     environment:
       PRISMA_CONFIG: |
         port: 4466
