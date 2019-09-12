@@ -1,4 +1,4 @@
-FROM node:11.11.0
+FROM node:12
 
 MAINTAINER jngcii <concotree@gmail.com>
 
@@ -8,7 +8,13 @@ ENV APP_PATH /app
 
 COPY . /app
 
-RUN npm install
-RUN npm install pm2 -g
+RUN npm install -g pm2
+RUN npm install yarn
+RUN yarn install
+RUN yarn global add prisma
+RUN prisma deploy
+RUN prisma generate
 
 EXPOSE 3000
+
+CMD pm2 start econsystem.config.js --interpreter ./node_modules/.bin/babel-node

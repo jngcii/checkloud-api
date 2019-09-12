@@ -18,6 +18,15 @@ const server = new GraphQLServer({
 
 server.express.use(logger("dev"));
 
-server.start({ port: PORT }, () =>
-	console.log(`Server running on http://localhost:${PORT}/`)
-);
+server.start({ port: PORT }, () => {
+	process.send("ready");
+	console.log(`Server running on http://localhost:${PORT}/`);
+});
+
+process.on(`SIGINT`, () => {
+	isDisableKeepAlive = true;
+	server.close(() => {
+		console.log("server closed");
+		process.exit(0);
+	});
+});
