@@ -55,11 +55,11 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# .env
 
 # next.js build output
 .next
 
 generated
-prisma.yml
-docker-compose.yml
+# prisma.yml
+# docker-compose.yml
